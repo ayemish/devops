@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URI=mongodb+srv://fa23bcs038_db_user:9GTeTUsMZ47oGEX7@cluster0.dsiojk4.mongodb.net/socialapp?retryWrites=true&w=majority
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend

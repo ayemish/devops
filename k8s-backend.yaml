@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: ayemish/jstb-backend:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: ayemish
+          value: "mongodb+srv://fa23bcs038_db_user:9GTeTUsMZ47oGEX7@cluster0.dsiojk4.mongodb.net/socialapp?retryWrites=true&w=majority"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: backend
+  ports:
+  - port: 8000
+    targetPort: 8000
+  type: ClusterIP
