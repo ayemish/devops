@@ -1,5 +1,5 @@
 import { useState } from "react"
-const API = import.meta.env.VITE_API_URL || "http://localhost:8000"
+const API = import.meta.env.VITE_API_URL || "http://4.187.188.157:8000"
 
 export default function CreatePost({ user, onPosted }) {
   const [content, setContent] = useState("")
